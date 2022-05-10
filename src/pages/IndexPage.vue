@@ -1,25 +1,22 @@
 <template>
   <q-page padding>
     <ul>
-      <li v-for="(task, index) in tasks" :key="task.id">
-        <div>{{ task.name }}</div>
-        <small>{{ task.dueDate }} {{ task.dueTime }}</small>
-        <button @click="deleteTask(index)">X</button>
-      </li>
+      <task-item v-for="task in tasks" :key="task.id" :task="task" />
     </ul>
   </q-page>
 </template>
 
 <script lang="ts">
-import { Todo } from 'components/models';
+// import { Todo } from 'components/models';
 import { defineComponent, ref } from 'vue';
 // import ExampleComponent from 'components/ExampleComponent.vue';
+import TaskItem from 'src/components/TaskItem.vue';
 
 export default defineComponent({
   name: 'IndexPage',
-  // components: { ExampleComponent },
+  components: { TaskItem },
   setup() {
-    const tasks = ref<Todo[]>([
+    const tasks = ref([
       {
         id: 1,
         name: 'Go to show',
