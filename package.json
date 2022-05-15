@@ -8,7 +8,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -22,12 +23,14 @@
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "autoprefixer": "^10.4.2",
+    "ejs": "^3.1.7",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^8.5.0",
+    "node-sass": "^7.0.1",
     "prettier": "^2.5.1",
-    "typescript": "^4.5.4",
-    "ejs": "^3.1.7"
+    "sass-loader": "^12.6.0",
+    "typescript": "^4.5.4"
   },
   "engines": {
     "node": "^18 || ^16 || ^14.19",

@@ -33,16 +33,35 @@
       :width="200"
       show-if-above
       bordered
-      content-class="bg-primary"
+      class="bg-primary"
     >
-      <q-list>
+      <q-list dark>
         <q-item-label header> ナビ </q-item-label>
 
-        <EssentialLink
+        <!-- <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
-        />
+          exact
+          clickable
+        /> -->
+
+        <q-item
+          v-for="link in essentialLinks"
+          :key="link.title"
+          :to="link.link"
+          exact
+          clickable
+        >
+          <q-item-section v-if="link.icon" avatar>
+            <q-icon :name="link.icon" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>{{ link.title }}</q-item-label>
+            <q-item-label caption>{{ link.caption }}</q-item-label>
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -54,7 +73,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import EssentialLink from 'components/EssentialLink.vue';
+// import EssentialLink from 'components/EssentialLink.vue';
 
 const linksList = [
   {
@@ -67,7 +86,7 @@ const linksList = [
     title: 'Settings',
     caption: '',
     icon: 'settings',
-    link: '#/settings',
+    link: '/settings',
   },
   {
     title: 'Docs',
@@ -80,9 +99,9 @@ const linksList = [
 export default defineComponent({
   name: 'MainLayout',
 
-  components: {
-    EssentialLink,
-  },
+  // components: {
+  //   EssentialLink,
+  // },
 
   setup() {
     const leftDrawerOpen = ref(false);
@@ -98,10 +117,15 @@ export default defineComponent({
 });
 </script>
 
-<style>
-@media screen and (min-width: 768px) {
+<style lang="scss">
+@media screen and (min-width: 468px) {
   .q-footer {
     display: none;
+  }
+  .q-drawer {
+    .q-router-link--exact-active {
+      color: white !important;
+    }
   }
 }
 </style>
